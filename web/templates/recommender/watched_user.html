@@ -1,0 +1,43 @@
+{% if args['watched_user']|length == 0 %}
+    <p>No movies found.</p>
+{% else %}
+    {% for movie in args['watched_user'] %}
+        <div class="item">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="single.html" class="hvr-shutter-out-horizontal"><img src="{{ movie['image_url'] }}" title="album-name" class="img-responsive" alt=" " />
+                    <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+                </a>
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                    <div class="w3l-movie-text">
+                        <h6><a href="single.html">{{ movie['title'] }}</a></h6>
+                    </div>
+                    <div class="mid-2 agile_mid_2_home">
+                        <p>{{ movie['year'] }}</p>
+                        <div class="block-stars">
+                            <ul class="w3l-ratings">
+                                {% for value in movie['rating_star'] %}
+
+                                    {% if value == 1.0 %}
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    {% elif value == 0.5 %}
+                                        <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                    {% else %}
+                                        <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                <!--
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                -->
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endif %}
